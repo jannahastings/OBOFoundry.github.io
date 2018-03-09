@@ -1,7 +1,6 @@
 ---
 layout: ontology_detail
 id: uberon
-type: owl:Ontology
 label: Uberon
 title: Uberon multi-species anatomy ontology
 build:
@@ -104,12 +103,10 @@ browsers:
     url: https://knowledge-space.org/index.php/pages/view/UBERON:0000061
 products:
  - id: uberon.owl
-   type: owl:Ontology
    title: Uberon
    description: "core ontology"
    is_canonical: true
  - id: uberon/ext.owl
-   type: owl:Ontology
    description: Uberon extended
    title: "Uberon edition that includes subsets of other ontologies and axioms connecting to them"
    mireots_from: cl
