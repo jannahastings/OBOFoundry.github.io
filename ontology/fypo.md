@@ -22,8 +22,8 @@ publications:
   - id: http://www.ncbi.nlm.nih.gov/pubmed/23658422
     title: "FYPO: The Fission Yeast Phenotype Ontology."
 license:
-  url: http://creativecommons.org/licenses/by/3.0/
-  label: CC-BY
+  url: https://creativecommons.org/licenses/by/3.0/
+  label: CC-BY 3.0
 depicted_by: http://www.pombase.org/sites/pombase.org/files/images/fypo_logo_tiny.png
 usages:
   - user: https://www.pombase.org
