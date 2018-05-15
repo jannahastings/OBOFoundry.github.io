@@ -39,10 +39,7 @@ An ontology that is in Frames format.
 The ontology is available in at least one of the following formats:
 
 - OBO Format
-- OWL or OWL2 concrete syntax
-    - RDF/XML
-    - OWL2-XML
-    - OWL2-Manchester Syntax
+- OWL (in RDF/XML format)
 
 ## History
 
