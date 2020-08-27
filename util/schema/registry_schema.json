@@ -1,0 +1,487 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id" : "http://obofoundry.org/config/registry_schema",
+	"title": "registry_schema",
+	"additionalProperties": false,
+	"properties": {
+		"aberowl_id": true,
+		"activity_status": true,
+		"alternative_prefix": true,
+		"alternatePrefix": true,
+		"alternativePrefix": true,
+		"biosharing": true,
+		"browsers": true,
+		"build": true,
+		"canonical": true,
+		"contact": true,
+		"created_with": true,
+		"createdWith": true,
+		"description": true,
+		"dependencies": true,
+		"development": true,
+		"depicted_by": true,
+		"documentation": true,
+		"domain": true,
+		"do_wiki": true,
+		"DO wiki": true,
+		"example_class": true,
+		"exampleClass": true,
+		"facebook": true,
+		"funded_by": true,
+		"google_plus": true,
+		"homepage": true,
+		"id": true,
+		"in_foundry": true,
+		"in_foundry_order": true,
+		"integration_server": true,
+		"is_obsolete": true,
+		"jobs": true,
+		"label": true,
+		"layout": true,
+		"license": true,
+		"mailing_list": true,
+		"ontology_purl": true,
+		"page": true,
+		"preferred_prefix": true,
+		"preferredPrefix": true,
+		"products": true,
+		"publications": true,
+		"redirects": true,
+		"releases": true,
+		"replaced_by": true,
+		"repository": true,
+		"review": true,
+		"source": true,
+		"source_url": true,
+		"taxon": true,
+		"termgenie": true,
+		"title": true,
+		"tracker": true,
+		"ty": true,
+		"type": true,
+		"twitter": true,
+		"usages": true,
+		"used_by": true,
+		"validate": true,
+		"was_derived_from": true,
+		"wasDerivedFrom": true,
+		"wikidata_template": true
+	},
+	"level": "error",
+	"allOf": [
+		{
+			"title": "aberowl_id",
+			"level": "error",
+			"description": "'aberowl_id' is an optional property, used only when AberOWL requires a special exception for this ontology's 'id'.",
+			"properties": {
+				"aberowl_id": {
+					"type": "string",
+					"pattern": "^[0-9a-z_]+$"
+				}
+			}
+		},
+		{
+			"title": "activity_status",
+			"level": "error",
+			"principle": "http://obofoundry.org/principles/fp-016-maintenance.html",
+			"description": "'activity_status' is a required property that must have a value of 'active', 'inactive', or 'orphaned'. Active ontologies have a contact and are currently in development. Orphaned ontologies are still in development, but do not have a contact. Inactive ontologies are no longer in development.",
+			"properties": {
+				"activity_status": {
+					"enum": [
+						"active",
+						"inactive",
+						"orphaned"
+					]
+				},
+				"errors": {
+					"activity_status": "${data} is not one of ${schema}."
+				}
+			},
+			"required": [
+				"activity_status"
+			]
+		},
+		{
+			"title": "browsers",
+			"level": "info",
+			"description": "'browsers' is an informative field. It specifies the URL of a website in which the ontology can be browsed. OntoBee is included by default.",
+			"properties": {
+				"browsers": {
+					"properties": {
+						"label": { "type": "string" },
+						"title": { "type": "string" },
+						"url": {
+							"type": "string",
+							"format": "uri"
+						}
+					},
+					"required": [ "label","title","url"]
+				}
+			}
+		},
+		{
+			"title": "contact",
+			"level": "error",
+			"principle": "http://obofoundry.org/principles/fp-011-locus-of-authority.html",
+			"description": "'contact' is a required property. This object must include an email and a label (the name of the contact). The contact is the person responsible for communications between the community and the ontology developers.",
+			"properties": {
+				"contact": {
+					"type": "object",
+					"properties": {
+						"github": {
+							"type": "string",
+							"pattern": "^[^@]+$"
+						},
+						"email": {
+							"type": "string",
+							"format": "email"
+						},
+						"label": {
+							"type": "string",
+							"pattern": "^[^@]+$"
+						}
+					},
+					"required": [
+						"email",
+						"label"
+					]
+				}
+			},
+			"required": [
+				"contact"
+			]
+		},
+		{
+			"title": "description",
+			"level": "warning",
+			"description": "'description' is a recommended property. The value is a a string that briefly describes the ontology project.",
+			"properties": {
+				"description": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"description"
+			]
+		},
+		{
+			"title": "domain",
+			"level": "warning",
+			"description": "'domain' is a recommended field. The value is the scientific topic area addressed by the ontology.",
+			"properties": {
+				"domain": { "type": "string" }
+			},
+			"required": ["domain"]
+		},
+		{
+			"title": "homepage",
+			"level": "warning",
+			"description": "'homepage' is a recommended property. The value is the full URL to the homepage.",
+			"properties": {
+				"homepage": {
+					"type": "string",
+					"format": "uri"
+				}
+			},
+			"required": [
+				"homepage"
+			]
+		},
+		{
+			"title": "id",
+			"level": "error",
+			"principle": "http://obofoundry.org/principles/fp-003-uris.html",
+			"description": "'id' is a required property. The value is a string with no numeric or lowercase characters. This is typically an abbreviation or acronym of the ontology title.",
+			"properties": {
+				"id": {
+					"type": "string",
+					"pattern": "^[0-9a-z_]+$"
+				}
+			},
+			"required": [
+				"id"
+			]
+		},
+		{
+			"title": "in_foundry",
+			"level": "warning",
+			"description": "'in_foundry' is a recommended field. The value is a boolean indicating whether the ontology is in the Foundry collection.",
+			"properties": {
+				"in_foundry": {
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		{
+			"title": "is_obsolete",
+			"level": "info",
+			"description": "'is_obsolete' is an informative field. It is set to true when the ontology is obsolete.",
+			"properties": {
+				"is_obsolete": {
+					"type": "boolean",
+					"default": false
+				}
+			}
+		},
+		{
+			"title": "layout",
+			"level": "error",
+			"description": "'layout' is a required field. The value should be 'ontology_detail'. ",
+			"properties": {
+				"layout": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"layout"
+			]
+		},
+		{
+			"title": "license-lite",
+			"level": "error",
+			"principle": "http://obofoundry.org/principles/fp-001-open.html",
+			"description": "'license' is a required property. The value is an object with a 'url' and 'label' field. The 'url' must be the full URL of the license, and the 'label' is the name of the license.",
+			"properties": {
+				"license": {
+					"type": "object",
+					"properties": {
+						"url": {
+							"type": "string",
+							"format": "uri"
+						},
+						"label": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"url",
+						"label"
+					]
+				}
+			},
+			"required": [
+				"license"
+			]
+		},
+		{
+			"title": "license",
+			"level": "warning",
+			"principle": "http://obofoundry.org/principles/fp-001-open.html",
+			"description": "It is recommended that the 'license' value is CC0 or CC-BY.",
+			"properties": {
+				"license": {
+					"type": "object",
+					"properties": {
+						"url": {
+							"type": "string",
+							"format": "uri"
+						},
+						"label": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"url",
+						"label"
+					],
+					"oneOf": [
+						{
+							"properties": {
+								"url": {
+									"enum": [
+										"http://creativecommons.org/licenses/by/4.0/",
+										"https://creativecommons.org/licenses/by/4.0/"
+									]
+								},
+								"label": {
+									"enum": [
+										"CC-BY",
+										"CC BY 4.0",
+										"CC-BY 4.0"
+									]
+								}
+							}
+						},
+						{
+							"properties": {
+								"url": {
+									"enum": [
+										"http://creativecommons.org/publicdomain/zero/1.0/",
+										"https://creativecommons.org/publicdomain/zero/1.0/"
+									]
+								},
+								"label": {
+									"enum": [
+										"CC-0",
+										"CC0",
+										"CC0 1.0 Universal",
+										"CC0 1.0"
+									]
+								}
+							}
+						},
+						{
+							"properties": {
+								"url": {
+									"enum": [
+										"http://creativecommons.org/licenses/by/3.0/",
+										"https://creativecommons.org/licenses/by/3.0/"
+									]
+								},
+								"label": {
+									"enum": [
+										"CC-BY",
+										"CC-BY 3.0",
+										"CC BY 3.0"
+									]
+								}
+							}
+						},
+						{
+							"properties": {
+								"url": {
+									"enum": [
+										"http://creativecommons.org/licenses/by-nd/4.0/",
+										"https://creativecommons.org/licenses/by-nd/4.0/"
+									]
+								},
+								"label": {
+									"enum": [
+										"CC BY-ND 4.0"
+									]
+								}
+							}
+						},
+						{
+							"properties": {
+								"url": {
+									"enum": [
+										"http://creativecommons.org/licenses/by-sa/2.0/",
+										"https://creativecommons.org/licenses/by-sa/2.0/"
+									]
+								},
+								"label": {
+									"enum": [
+										"CC-BY-SA",
+										"CC BY-SA 2.0"
+									]
+								}
+							}
+						},
+						{
+							"properties": {
+								"url": {
+									"enum": [
+										"http://creativecommons.org/licenses/by/2.0/",
+										"https://creativecommons.org/licenses/by/2.0/"
+									]
+								},
+								"label": {
+									"enum": [
+										"CC-BY",
+										"CC BY 2.0",
+										"CC-BY 2.0"
+									]
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"title": "mailing_list",
+			"level": "info",
+			"description": "'mailing_list' is an informative field. The value is a mailing list on which ontology discussions take place.",
+			"properties": {
+				"mailing_list": { "type": "string" }
+			}
+		},
+		{
+			"title": "products",
+			"level": "info",
+			"description": "'products' is a recommended field. The value is a list of resources, each with an ID. The resources should be in one of the following formats: OWL, OBO, JSON, OFN, OWX, TTL, or g-zipped OWL.",
+			"properties": {
+				"products": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"id": {
+								"type": "string",
+								"pattern": "^[0-9A-Za-z-_\\/]+\\.(owl|obo|json|omn|ofn|owx|ttl|owl\\.gz)$"
+							}
+						},
+						"required": [
+							"id"
+						]
+					}
+				}
+			},
+			"required": [
+				"products"
+			]
+		},
+		{
+			"title": "publications",
+			"level": "info",
+			"description": "'publications' is an informative field. It specifies where publications about the ontology can be found.",
+			"properties": {
+				"publications": {
+					"properties": {
+						"id": { "type": "string" },
+						"title": { "type": "string" }
+					},
+					"required": ["id","title"]
+				}
+			}
+		},
+		{
+			"title": "repository",
+			"level": "info",
+			"description": "'repository' is a recommended field. The value is the URL for the repository in which the ontology files are stored.",
+			"properties": {
+				"repository": {
+					"type": "string",
+					"format": "uri"
+				}
+			}
+		},
+		{
+			"title": "title",
+			"level": "error",
+			"description": "'title' is a required field. The value is the full name of the ontology project.",
+			"properties": {
+				"title": { "type": "string" }
+			},
+			"required": ["title"]
+		},
+		{
+			"title": "taxon",
+			"level": "info",
+			"description": "'taxon' is an informative field. The value is the taxonomic identifier of the organism that is the subject of the ontology.",
+			"properties": {
+				"taxon": {
+					"properties": {
+						"id": {"type": "string"},
+						"label": {"type": "string"}
+					}
+				}
+			}
+		},
+		{
+			"title": "tracker",
+			"level": "warning",
+			"description": "'tracker' is a recommended field. The value is the URI of an issue tracker for the ontology.",
+			"properties": {
+				"tracker": {
+					"type": "string",
+				    "format": "uri"
+				}
+			},
+			"required": ["tracker"]
+		}
+	]
+}
+
