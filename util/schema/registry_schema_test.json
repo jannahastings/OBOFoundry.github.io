@@ -335,12 +335,15 @@
 		"publications": {
 			"level": "info",
 			"description": "'publications' is an informative field. It specifies where publications about the ontology can be found.",
-			"type": "object",
-			"properties": {
-				"id": { "type": "string" },
-				"title": { "type": "string" }
-			},
-			"required": ["id","title"]
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": { "type": "string" },
+					"title": { "type": "string" }
+				},
+				"required": ["id","title"]
+			}
 		},
 		"redirects": {
 			"suggest": false
