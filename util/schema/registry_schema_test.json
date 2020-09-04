@@ -46,11 +46,13 @@
 			"items":
 			{
 				"type": "object",
-				"label": { "type": "string" },
-				"title": { "type": "string" },
-				"url": {
-					"type": "string",
-					"format": "uri"
+				"properties": {
+					"label": { "type": "string" },
+					"title": { "type": "string" },
+					"url": {
+						"type": "string",
+						"format": "uri"
+					}
 				},
 				"required": [ "label","title","url"]
 			}
