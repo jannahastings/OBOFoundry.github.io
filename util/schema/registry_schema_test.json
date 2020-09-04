@@ -42,16 +42,18 @@
 		"browsers": {
 			"level": "info",
 			"description": "'browsers' is an informative field. It specifies the URL of a website in which the ontology can be browsed. OntoBee is included by default.",
-			"type": "object",
-			"properties": {
+			"type": "array",
+			"items":
+			{
+				"type": "object",
 				"label": { "type": "string" },
 				"title": { "type": "string" },
 				"url": {
 					"type": "string",
 					"format": "uri"
-				}
-			},
-			"required": [ "label","title","url"]
+				},
+				"required": [ "label","title","url"]
+			}
 		},
 		"build": {
 			"suggest": false
