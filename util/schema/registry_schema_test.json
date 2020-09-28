@@ -175,7 +175,9 @@
 		"layout": {
 			"level": "error",
 			"description": "'layout' is a required field. It manages the display of the ontology record on the OBO Foundry website. The value should be 'ontology_detail'. ",
-			"type": "string"
+			"type": "string",
+			"suggestion": "ontology_detail",
+			"enum": ["ontology_detail"]
 		},
 		"license": {
 			"level": "warning",
