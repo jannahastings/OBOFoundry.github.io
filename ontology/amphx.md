@@ -1,6 +1,7 @@
 ---
 layout: ontology_detail
 id: amphx
+id: oh dear
 title: The Amphioxus Development and Anatomy Ontology
 build:
   checkout: git clone https://github.com/EBISPOT/amphx_ontology.git
