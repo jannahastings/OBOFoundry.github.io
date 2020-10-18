@@ -10,7 +10,7 @@ license:
   label: CC-BY
 domain: health
 homepage: http://purl.obolibrary.org/obo/aero
-is_obsolete: true
+is_obsolete: false
 products:
   - id: aero.owl
 title: Adverse Event Reporting Ontology
