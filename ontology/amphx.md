@@ -11,6 +11,7 @@ contact:
   label: Hector Escriva
 description: An ontology for the development and anatomy of Amphioxus (Branchiostoma lanceolatum).
 domain: anatomy
+domain: dkdkdkd
 homepage: https://github.com/EBISPOT/amphx_ontology
 products:
   - id: amphx.owl
