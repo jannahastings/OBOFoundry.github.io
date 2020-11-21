@@ -258,6 +258,23 @@
 					"properties": {
 						"url": {
 							"enum": [
+								"http://creativecommons.org/licenses/by/4.0/",
+								"https://creativecommons.org/licenses/by/4.0/"
+							]
+						},
+						"label": {
+							"enum": [
+								"CC-BY",
+								"CC-BY 4.0",
+								"CC BY 4.0"
+							]
+						}
+					}
+				},
+				{
+					"properties": {
+						"url": {
+							"enum": [
 								"http://creativecommons.org/licenses/by-nd/4.0/",
 								"https://creativecommons.org/licenses/by-nd/4.0/"
 							]
